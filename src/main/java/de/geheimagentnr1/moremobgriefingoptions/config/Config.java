@@ -35,6 +35,7 @@ public class Config {
 		new ConfigOption( "fox", FoxEntity.class ),//MN
 		new ConfigOption( "ghast", GhastEntity.class ),//MN
 		new ConfigOption( "husk", HuskEntity.class ),//MN
+		new ConfigOption( "ravager", RavagerEntity.class ),//MN
 		new ConfigOption( "rabbit", RabbitEntity.class ),//MN
 		new ConfigOption( "sheep", SheepEntity.class ),//MN
 		new ConfigOption( "silverfish", SilverfishEntity.class ),//MN
