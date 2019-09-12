@@ -18,7 +18,16 @@ public class MobGriefingHandler {
 		
 		for( ConfigOption option : Config.OPTIONS ) {
 			if( option.entity_class.isInstance( event.getEntity() ) ) {
-				event.setResult( option.getValue() ? Event.Result.ALLOW : Event.Result.DENY );
+				switch( option.getValue() ) {
+					case DEFAULT:
+						return;
+					case TRUE:
+						event.setResult( Event.Result.ALLOW );
+						return;
+					case FALSE:
+						event.setResult( Event.Result.DENY );
+						return;
+				}
 				break;
 			}
 		}

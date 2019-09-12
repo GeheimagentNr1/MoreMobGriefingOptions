@@ -51,7 +51,8 @@ public class Config {
 		
 		BUILDER.comment( "MobGriefing settings" ).push( MOBGRIEFING );
 		for( ConfigOption option : OPTIONS ) {
-			option.value = BUILDER.comment( option.key + " " + MOBGRIEFING ).define( option.key, true );
+			option.value = BUILDER.comment( option.key + " " + MOBGRIEFING )
+				.define( option.key, MobGriefingOptionType.DEFAULT );
 		}
 		BUILDER.pop();
 		

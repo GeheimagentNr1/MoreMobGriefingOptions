@@ -10,7 +10,7 @@ public class ConfigOption {
 	final String key;
 	
 	//package-private
-	ForgeConfigSpec.BooleanValue value;
+	ForgeConfigSpec.ConfigValue<MobGriefingOptionType> value;
 	
 	@SuppressWarnings( "PublicField" )
 	public final Class entity_class;
@@ -27,12 +27,12 @@ public class ConfigOption {
 		return key;
 	}
 	
-	public boolean getValue() {
+	public MobGriefingOptionType getValue() {
 		
 		return value.get();
 	}
 	
-	public void setValue( Boolean _value ) {
+	public void setValue( MobGriefingOptionType _value ) {
 		
 		value.set( _value );
 	}
