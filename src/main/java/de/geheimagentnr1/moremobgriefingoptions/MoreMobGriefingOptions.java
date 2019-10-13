@@ -4,9 +4,11 @@ import de.geheimagentnr1.moremobgriefingoptions.config.Config;
 import net.minecraftforge.fml.common.Mod;
 
 
-@Mod( "moremobgriefingoptions" )
+@SuppressWarnings( "UtilityClassWithPublicConstructor" )
+@Mod( MoreMobGriefingOptions.MODID )
 public class MoreMobGriefingOptions {
 	
+	public final static String MODID = "moremobgriefingoptions";
 	
 	public MoreMobGriefingOptions() {
 		
