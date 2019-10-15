@@ -7,6 +7,7 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +35,9 @@ public class Config {
 		new ConfigOption( "evoker", EvokerEntity.class ),//MN
 		new ConfigOption( "fox", FoxEntity.class ),//MN
 		new ConfigOption( "ghast", GhastEntity.class ),//MN
+		new ConfigOption( "horse", HorseEntity.class ),//MN
 		new ConfigOption( "husk", HuskEntity.class ),//MN
+		new ConfigOption( "pig", PigEntity.class ),//MN
 		new ConfigOption( "ravager", RavagerEntity.class ),//MN
 		new ConfigOption( "rabbit", RabbitEntity.class ),//MN
 		new ConfigOption( "sheep", SheepEntity.class ),//MN

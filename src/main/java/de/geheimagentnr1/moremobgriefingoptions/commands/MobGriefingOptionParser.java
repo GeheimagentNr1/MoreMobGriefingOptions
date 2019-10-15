@@ -77,8 +77,8 @@ class MobGriefingOptionParser {
 		return Optional.empty();
 	}
 	
-	@SuppressWarnings( "ReturnOfThis" )
 	//package-private
+	@SuppressWarnings( "ReturnOfThis" )
 	MobGriefingOptionParser parse() throws CommandSyntaxException {
 		
 		suggestionsBuilder = this::suggestColor;

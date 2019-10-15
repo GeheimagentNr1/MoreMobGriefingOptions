@@ -76,8 +76,8 @@ class ConfigOptionParser {
 		return Optional.empty();
 	}
 	
-	@SuppressWarnings( "ReturnOfThis" )
 	//package-private
+	@SuppressWarnings( "ReturnOfThis" )
 	ConfigOptionParser parse() throws CommandSyntaxException {
 		
 		suggestionsBuilder = this::suggestColor;

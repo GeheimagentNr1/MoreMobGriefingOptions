@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod( MoreMobGriefingOptions.MODID )
 public class MoreMobGriefingOptions {
 	
+	
 	public final static String MODID = "moremobgriefingoptions";
 	
 	public MoreMobGriefingOptions() {
