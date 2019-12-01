@@ -1,4 +1,4 @@
-package de.geheimagentnr1.moremobgriefingoptions.handler;
+package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
 import de.geheimagentnr1.moremobgriefingoptions.commands.MobGriefingCommand;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

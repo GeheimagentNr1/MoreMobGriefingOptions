@@ -1,5 +1,6 @@
 package de.geheimagentnr1.moremobgriefingoptions;
 
+import de.geheimagentnr1.moremobgriefingoptions.commands.ModArgumentTypes;
 import de.geheimagentnr1.moremobgriefingoptions.config.Config;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,5 +15,6 @@ public class MoreMobGriefingOptions {
 	public MoreMobGriefingOptions() {
 		
 		Config.loadConfig();
+		ModArgumentTypes.registerArgumentTypes();
 	}
 }
