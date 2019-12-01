@@ -18,12 +18,15 @@ public class MobGriefingOptionArgument implements ArgumentType<MobGriefingOption
 	
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
-	public static MobGriefingOptionArgument mob_griefing_option() {
+	//package-private
+	static MobGriefingOptionArgument mob_griefing_option() {
 		
 		return new MobGriefingOptionArgument();
 	}
 	
-	public static <S> MobGriefingOptionType getMobGriefingOption( CommandContext<S> context, String name ) {
+	//package-private
+	@SuppressWarnings( "SameParameterValue" )
+	static <S> MobGriefingOptionType getMobGriefingOption( CommandContext<S> context, String name ) {
 		
 		return context.getArgument( name, MobGriefingOptionType.class );
 	}

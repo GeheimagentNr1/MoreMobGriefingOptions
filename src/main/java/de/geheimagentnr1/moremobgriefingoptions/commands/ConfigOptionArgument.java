@@ -18,12 +18,15 @@ public class ConfigOptionArgument implements ArgumentType<ConfigOption> {
 	
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
-	public static ConfigOptionArgument config_option() {
+	//package-private
+	static ConfigOptionArgument config_option() {
 		
 		return new ConfigOptionArgument();
 	}
 	
-	public static <S> ConfigOption getConfigOption( CommandContext<S> context, String name ) {
+	//package-private
+	@SuppressWarnings( "SameParameterValue" )
+	static <S> ConfigOption getConfigOption( CommandContext<S> context, String name ) {
 		
 		return context.getArgument( name, ConfigOption.class );
 	}
