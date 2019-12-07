@@ -23,11 +23,11 @@ import java.util.function.Function;
 class MobGriefingOptionParser {
 	
 	
-	private static final DynamicCommandExceptionType MOB_GRIEFING_OPTION_INVALID = new DynamicCommandExceptionType(
+	private final static DynamicCommandExceptionType MOB_GRIEFING_OPTION_INVALID = new DynamicCommandExceptionType(
 		object -> new TranslationTextComponent( MoreMobGriefingOptions.MODID + ":argument.mob_griefing_option.invalid",
 			object ) );
 	
-	private static final Set<String> MOB_GRIEFING_OPTIONS = getMobGriefingOptionKeySet();
+	private final static Set<String> MOB_GRIEFING_OPTIONS = getMobGriefingOptionKeySet();
 	
 	private final StringReader reader;
 	

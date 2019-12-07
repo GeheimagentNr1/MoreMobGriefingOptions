@@ -23,10 +23,10 @@ import java.util.function.Function;
 class ConfigOptionParser {
 	
 	
-	private static final DynamicCommandExceptionType CONFIG_OPTION_INVALID = new DynamicCommandExceptionType( object ->
+	private final static DynamicCommandExceptionType CONFIG_OPTION_INVALID = new DynamicCommandExceptionType( object ->
 		new TranslationTextComponent( MoreMobGriefingOptions.MODID + ":argument.config_option.invalid", object ) );
 	
-	private static final Set<String> CONFIG_OPTIONS = getConfigOptionKeySet();
+	private final static Set<String> CONFIG_OPTIONS = getConfigOptionKeySet();
 	
 	private final StringReader reader;
 	
