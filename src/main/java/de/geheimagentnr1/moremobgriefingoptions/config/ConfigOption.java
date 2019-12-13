@@ -10,7 +10,7 @@ public class ConfigOption {
 	final String key;
 	
 	//package-private
-	ForgeConfigSpec.ConfigValue<MobGriefingOptionType> value;
+	ForgeConfigSpec.EnumValue<MobGriefingOptionType> value;
 	
 	@SuppressWarnings( "PublicField" )
 	public final Class entity_class;

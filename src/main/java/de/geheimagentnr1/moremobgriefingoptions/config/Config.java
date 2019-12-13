@@ -13,6 +13,8 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.function.Predicate;
+
 
 public class Config {
 	
@@ -55,7 +57,7 @@ public class Config {
 		BUILDER.comment( "MobGriefing settings" ).push( MOBGRIEFING );
 		for( ConfigOption option : OPTIONS ) {
 			option.value = BUILDER.comment( option.key + " " + MOBGRIEFING )
-				.define( option.key, MobGriefingOptionType.DEFAULT );
+				.defineEnum( option.key, MobGriefingOptionType.DEFAULT );
 		}
 		BUILDER.pop();
 		
