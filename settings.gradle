@@ -1,2 +1,1 @@
-rootProject.name = "MoreMobGriefingOptions-${mc_version}"
 rootProject.name = "${mod_name}-${mc_version}"
