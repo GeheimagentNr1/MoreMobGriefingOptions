@@ -43,7 +43,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                dimension_access_manager {
+                moremobgriefingoptions {
                     source sourceSets.main
                 }
             }
@@ -59,7 +59,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                dimension_access_manager {
+                moremobgriefingoptions {
                     source sourceSets.main
                 }
             }
@@ -74,10 +74,10 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'dimension_access_manager', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'moremobgriefingoptions', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                dimension_access_manager {
+                moremobgriefingoptions {
                     source sourceSets.main
                 }
             }
