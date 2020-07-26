@@ -10,8 +10,9 @@ import net.minecraftforge.fml.common.Mod;
 public class MoreMobGriefingOptions {
 	
 	
-	public final static String MODID = "moremobgriefingoptions";
+	public static final String MODID = "moremobgriefingoptions";
 	
+	@SuppressWarnings( "unused" )
 	public MoreMobGriefingOptions() {
 		
 		Config.loadConfig();

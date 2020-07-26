@@ -3,7 +3,7 @@ package de.geheimagentnr1.moremobgriefingoptions.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 
-@SuppressWarnings( "rawtypes" )
+@SuppressWarnings( { "rawtypes", "PackageVisibleField" } )
 public class ConfigOption {
 	
 	

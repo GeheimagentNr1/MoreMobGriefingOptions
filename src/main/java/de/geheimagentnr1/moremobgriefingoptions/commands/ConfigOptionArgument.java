@@ -13,13 +13,14 @@ import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
 
-public class ConfigOptionArgument implements ArgumentType<ConfigOption> {
+//package-private
+class ConfigOptionArgument implements ArgumentType<ConfigOption> {
 	
 	
 	//package-private
-	final static String registry_name = "config_option";
+	static final String registry_name = "config_option";
 	
-	private final static Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
+	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
 	//package-private
 	static ConfigOptionArgument config_option() {

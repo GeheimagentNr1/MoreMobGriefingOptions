@@ -23,10 +23,10 @@ import java.util.function.Function;
 class ConfigOptionParser {
 	
 	
-	private final static DynamicCommandExceptionType CONFIG_OPTION_INVALID = new DynamicCommandExceptionType( object ->
+	private static final DynamicCommandExceptionType CONFIG_OPTION_INVALID = new DynamicCommandExceptionType( object ->
 		new TranslationTextComponent( MoreMobGriefingOptions.MODID + ":argument.config_option.invalid", object ) );
 	
-	private final static Set<String> CONFIG_OPTIONS = getConfigOptionKeySet();
+	private static final Set<String> CONFIG_OPTIONS = getConfigOptionKeySet();
 	
 	private final StringReader reader;
 	
@@ -68,9 +68,9 @@ class ConfigOptionParser {
 	
 	private Optional<ConfigOption> getConfigOptionForRegistry( ResourceLocation resourceLocation ) {
 		
-		for( ConfigOption configOption : Config.OPTIONS ) {
-			if( configOption.getKey().equals( resourceLocation.getPath() ) ) {
-				return Optional.of( configOption );
+		for( ConfigOption config_option : Config.OPTIONS ) {
+			if( config_option.getKey().equals( resourceLocation.getPath() ) ) {
+				return Optional.of( config_option );
 			}
 		}
 		return Optional.empty();

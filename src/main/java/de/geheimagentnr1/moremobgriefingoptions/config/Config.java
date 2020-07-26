@@ -18,16 +18,16 @@ import org.apache.logging.log4j.Logger;
 public class Config {
 	
 	
-	private final static Logger LOGGER = LogManager.getLogger();
+	private static final Logger LOGGER = LogManager.getLogger();
 	
-	private final static ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	
-	private final static ForgeConfigSpec CONFIG;
+	private static final ForgeConfigSpec CONFIG;
 	
-	private final static String MOBGRIEFING = "mobGriefing";
+	private static final String MOBGRIEFING = "mobGriefing";
 	
 	@SuppressWarnings( "PublicStaticArrayField" )
-	public final static ConfigOption[] OPTIONS = new ConfigOption[] {
+	public static final ConfigOption[] OPTIONS = new ConfigOption[] {
 		new ConfigOption( "blaze", BlazeEntity.class ),//MN
 		new ConfigOption( "cow", CowEntity.class ),//MN
 		new ConfigOption( "creeper", CreeperEntity.class ),//MN
