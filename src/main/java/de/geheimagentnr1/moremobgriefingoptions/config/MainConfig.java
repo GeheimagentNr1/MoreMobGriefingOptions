@@ -1,7 +1,5 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
@@ -10,19 +8,20 @@ import net.minecraft.entity.monster.piglin.PiglinEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class Config {
+public class MainConfig {
 	
 	
 	private static final Logger LOGGER = LogManager.getLogger();
 	
+	private static final String mod_name = "More MobGriefing Options";
+	
 	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	
-	private static final ForgeConfigSpec CONFIG;
+	public static final ForgeConfigSpec CONFIG;
 	
 	private static final String MOBGRIEFING = "mobGriefing";
 	
@@ -65,17 +64,12 @@ public class Config {
 		CONFIG = BUILDER.build();
 	}
 	
-	public static void loadConfig() {
+	public static void printConfig() {
 		
-		CommentedFileConfig configData = CommentedFileConfig.builder( FMLPaths.CONFIGDIR.get()
-			.resolve( "moremobgriefingoptions.toml" ) ).sync().autosave().writingMode( WritingMode.REPLACE ).build();
-		
-		LOGGER.info( "Loading \"More MobGriefing Options\" Config" );
-		configData.load();
-		CONFIG.setConfig( configData );
+		LOGGER.info( "Loading \"{}\" Config", mod_name );
 		for( ConfigOption option : OPTIONS ) {
 			LOGGER.info( "{} " + MOBGRIEFING + " = {}", option.key, option.getValue() );
 		}
-		LOGGER.info( "\"More MobGriefing Options\" Config loaded" );
+		LOGGER.info( "\"{}\" Config loaded", mod_name );
 	}
 }

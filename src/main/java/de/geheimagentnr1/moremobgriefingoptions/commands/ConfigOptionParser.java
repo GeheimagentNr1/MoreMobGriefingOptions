@@ -6,8 +6,8 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
-import de.geheimagentnr1.moremobgriefingoptions.config.Config;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
+import de.geheimagentnr1.moremobgriefingoptions.config.MainConfig;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -44,7 +44,7 @@ class ConfigOptionParser {
 		
 		Set<String> keySet = new TreeSet<>();
 		
-		for( ConfigOption config_option : Config.OPTIONS ) {
+		for( ConfigOption config_option : MainConfig.OPTIONS ) {
 			keySet.add( config_option.getKey() );
 		}
 		return keySet;
@@ -68,9 +68,9 @@ class ConfigOptionParser {
 	
 	private Optional<ConfigOption> getConfigOptionForRegistry( ResourceLocation resourceLocation ) {
 		
-		for( ConfigOption config_option : Config.OPTIONS ) {
-			if( config_option.getKey().equals( resourceLocation.getPath() ) ) {
-				return Optional.of( config_option );
+		for( ConfigOption forConfigOption : MainConfig.OPTIONS ) {
+			if( forConfigOption.getKey().equals( resourceLocation.getPath() ) ) {
+				return Optional.of( forConfigOption );
 			}
 		}
 		return Optional.empty();

@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @SuppressWarnings( "unused" )
 @Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.FORGE )
-public class ForgeRegistryEventHandler {
+public class ForgeEventHandler {
 	
 	
 	@SubscribeEvent
