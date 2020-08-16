@@ -16,7 +16,6 @@ public class MoreMobGriefingOptions {
 	
 	public MoreMobGriefingOptions() {
 		
-		
 		ModLoadingContext.get().registerConfig( ModConfig.Type.COMMON, MainConfig.CONFIG, MODID + ".toml" );
 		ModArgumentTypes.registerArgumentTypes();
 	}

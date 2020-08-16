@@ -1,7 +1,7 @@
 package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
-import de.geheimagentnr1.moremobgriefingoptions.config.MainConfig;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
+import de.geheimagentnr1.moremobgriefingoptions.config.MainConfig;
 import net.minecraftforge.event.entity.EntityMobGriefingEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
