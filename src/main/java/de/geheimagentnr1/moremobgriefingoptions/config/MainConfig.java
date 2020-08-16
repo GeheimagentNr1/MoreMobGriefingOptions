@@ -4,6 +4,7 @@ import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
 import net.minecraft.entity.monster.piglin.PiglinEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.passive.horse.HorseEntity;
@@ -39,6 +40,7 @@ public class MainConfig {
 		new ConfigOption( "husk", HuskEntity.class ),//MN
 		new ConfigOption( "pig", PigEntity.class ),//MN
 		new ConfigOption( "piglin", PiglinEntity.class ),//MN
+		new ConfigOption( "piglin_brute", PiglinBruteEntity.class ),//MN
 		new ConfigOption( "ravager", RavagerEntity.class ),//MN
 		new ConfigOption( "rabbit", RabbitEntity.class ),//MN
 		new ConfigOption( "sheep", SheepEntity.class ),//MN
