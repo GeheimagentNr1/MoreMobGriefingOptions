@@ -13,13 +13,14 @@ import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
 
-public class MobGriefingOptionArgument implements ArgumentType<MobGriefingOptionType> {
+//package-private
+class MobGriefingOptionArgument implements ArgumentType<MobGriefingOptionType> {
 	
 	
 	//package-private
-	final static String registry_name = "mob_griefing_option";
+	static final String registry_name = "mob_griefing_option";
 	
-	private final static Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
+	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
 	//package-private
 	static MobGriefingOptionArgument mob_griefing_option() {

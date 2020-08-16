@@ -6,7 +6,7 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
-import de.geheimagentnr1.moremobgriefingoptions.config.Config;
+import de.geheimagentnr1.moremobgriefingoptions.config.MainConfig;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.util.ResourceLocation;
@@ -23,10 +23,10 @@ import java.util.function.Function;
 class ConfigOptionParser {
 	
 	
-	private final static DynamicCommandExceptionType CONFIG_OPTION_INVALID = new DynamicCommandExceptionType( object ->
+	private static final DynamicCommandExceptionType CONFIG_OPTION_INVALID = new DynamicCommandExceptionType( object ->
 		new TranslationTextComponent( MoreMobGriefingOptions.MODID + ":argument.config_option.invalid", object ) );
 	
-	private final static Set<String> CONFIG_OPTIONS = getConfigOptionKeySet();
+	private static final Set<String> CONFIG_OPTIONS = getConfigOptionKeySet();
 	
 	private final StringReader reader;
 	
@@ -44,7 +44,7 @@ class ConfigOptionParser {
 		
 		Set<String> keySet = new TreeSet<>();
 		
-		for( ConfigOption config_option : Config.OPTIONS ) {
+		for( ConfigOption config_option : MainConfig.OPTIONS ) {
 			keySet.add( config_option.getKey() );
 		}
 		return keySet;
@@ -68,9 +68,9 @@ class ConfigOptionParser {
 	
 	private Optional<ConfigOption> getConfigOptionForRegistry( ResourceLocation resourceLocation ) {
 		
-		for( ConfigOption configOption : Config.OPTIONS ) {
-			if( configOption.getKey().equals( resourceLocation.getPath() ) ) {
-				return Optional.of( configOption );
+		for( ConfigOption forConfigOption : MainConfig.OPTIONS ) {
+			if( forConfigOption.getKey().equals( resourceLocation.getPath() ) ) {
+				return Optional.of( forConfigOption );
 			}
 		}
 		return Optional.empty();

@@ -1,6 +1,6 @@
 package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
-import de.geheimagentnr1.moremobgriefingoptions.config.Config;
+import de.geheimagentnr1.moremobgriefingoptions.config.MainConfig;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import net.minecraftforge.event.entity.EntityMobGriefingEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -16,7 +16,7 @@ public class MobGriefingHandler {
 	@SubscribeEvent
 	public static void handleMobGriefing( EntityMobGriefingEvent event ) {
 		
-		for( ConfigOption option : Config.OPTIONS ) {
+		for( ConfigOption option : MainConfig.OPTIONS ) {
 			if( option.entity_class.isInstance( event.getEntity() ) ) {
 				switch( option.getValue() ) {
 					case DEFAULT:
