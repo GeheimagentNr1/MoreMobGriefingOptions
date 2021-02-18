@@ -20,7 +20,7 @@ class MobGriefingOptionArgument implements ArgumentType<MobGriefingOptionType> {
 	//package-private
 	static final String registry_name = "mob_griefing_option";
 	
-	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
+	private static final Collection<String> EXAMPLES = Collections.singletonList( "default" );
 	
 	//package-private
 	static MobGriefingOptionArgument mob_griefing_option() {
@@ -43,7 +43,8 @@ class MobGriefingOptionArgument implements ArgumentType<MobGriefingOptionType> {
 	}
 	
 	@Override
-	public <S> CompletableFuture<Suggestions> listSuggestions( CommandContext<S> context,
+	public <S> CompletableFuture<Suggestions> listSuggestions(
+		CommandContext<S> context,
 		SuggestionsBuilder builder ) {
 		
 		StringReader reader = new StringReader( builder.getInput() );
