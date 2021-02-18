@@ -7,14 +7,14 @@ import net.minecraftforge.fml.network.FMLNetworkConstants;
 import org.apache.commons.lang3.tuple.Pair;
 
 
-@SuppressWarnings( "unused" )
+@SuppressWarnings( { "unused", "UtilityClassWithPublicConstructor" } )
 @Mod( MoreMobGriefingOptions.MODID )
 public class MoreMobGriefingOptions {
 	
 	
 	public static final String MODID = "moremobgriefingoptions";
 	
-	private MoreMobGriefingOptions() {
+	public MoreMobGriefingOptions() {
 		
 		ModLoadingContext.get().registerExtensionPoint(
 			ExtensionPoint.DISPLAYTEST,
