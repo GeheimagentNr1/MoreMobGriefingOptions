@@ -24,8 +24,10 @@ class MobGriefingOptionParser {
 	
 	
 	private static final DynamicCommandExceptionType MOB_GRIEFING_OPTION_INVALID = new DynamicCommandExceptionType(
-		object -> new TranslationTextComponent( MoreMobGriefingOptions.MODID + ":argument.mob_griefing_option.invalid",
-			object ) );
+		object -> new TranslationTextComponent(
+			MoreMobGriefingOptions.MODID + ":argument.mob_griefing_option.invalid",
+			object
+		) );
 	
 	private static final Set<String> MOB_GRIEFING_OPTIONS = getMobGriefingOptionKeySet();
 	

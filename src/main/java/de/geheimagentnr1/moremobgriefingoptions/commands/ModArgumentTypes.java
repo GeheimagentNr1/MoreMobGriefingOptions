@@ -10,10 +10,15 @@ public class ModArgumentTypes {
 	
 	public static void registerArgumentTypes() {
 		
-		ArgumentTypes.register( MoreMobGriefingOptions.MODID + ":" + ConfigOptionArgument.registry_name,
-			ConfigOptionArgument.class, new ArgumentSerializer<>( ConfigOptionArgument::config_option ) );
-		ArgumentTypes.register( MoreMobGriefingOptions.MODID + ":" + MobGriefingOptionArgument.registry_name,
+		ArgumentTypes.register(
+			MoreMobGriefingOptions.MODID + ":" + ConfigOptionArgument.registry_name,
+			ConfigOptionArgument.class,
+			new ArgumentSerializer<>( ConfigOptionArgument::config_option )
+		);
+		ArgumentTypes.register(
+			MoreMobGriefingOptions.MODID + ":" + MobGriefingOptionArgument.registry_name,
 			MobGriefingOptionArgument.class,
-			new ArgumentSerializer<>( MobGriefingOptionArgument::mob_griefing_option ) );
+			new ArgumentSerializer<>( MobGriefingOptionArgument::mob_griefing_option )
+		);
 	}
 }
