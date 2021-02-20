@@ -28,7 +28,7 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
 	private static final DynamicCommandExceptionType INVALID_CONFIG_OPTION_EXCEPTION = new DynamicCommandExceptionType(
-		( entityKey ) -> new StringTextComponent( "Unkown entity: " ).appendText( entityKey.toString() )
+		( entityKey ) -> new StringTextComponent( "Unkown entity: " ).func_240702_b_( entityKey.toString() )
 	);
 	
 	//package-private
