@@ -1,5 +1,7 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
+import net.minecraft.entity.EntityType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 
@@ -7,34 +9,43 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class ConfigOption {
 	
 	
-	//package-private
-	final String key;
+	private final ResourceLocation key;
+	
+	private ForgeConfigSpec.EnumValue<MobGriefingOptionType> spec;
+	
+	private final EntityType<?> entity_type;
 	
 	//package-private
-	ForgeConfigSpec.EnumValue<MobGriefingOptionType> value;
-	
-	@SuppressWarnings( "PublicField" )
-	public final Class<?> entity_class;
-	
-	//package-private
-	ConfigOption( String _key, Class<?> _entity_class ) {
+	ConfigOption( ResourceLocation _key, EntityType<?> _entity_type ) {
 		
 		key = _key;
-		entity_class = _entity_class;
+		entity_type = _entity_type;
 	}
 	
-	public String getKey() {
+	public ResourceLocation getKey() {
 		
 		return key;
 	}
 	
+	//package-private
+	void setSpec( ForgeConfigSpec.EnumValue<MobGriefingOptionType> _spec ) {
+		
+		spec = _spec;
+	}
+	
 	public MobGriefingOptionType getValue() {
 		
-		return value.get();
+		return spec.get();
 	}
+	
 	
 	public void setValue( MobGriefingOptionType _value ) {
 		
-		value.set( _value );
+		spec.set( _value );
+	}
+	
+	public EntityType<?> getEntityType() {
+		
+		return entity_type;
 	}
 }
