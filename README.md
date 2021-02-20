@@ -1,7 +1,7 @@
 # More MobGriefing Options
 
 This is a Minecraft Forge mod.  
-A mod description can be found on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/last-played-logger).  
+A mod description can be found on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/more-mobgriefing-options).  
 This is a combined work only using and not modifying used libraries.
 
 ## Used libraries
