@@ -28,7 +28,8 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
 	private static final DynamicCommandExceptionType INVALID_CONFIG_OPTION_EXCEPTION = new DynamicCommandExceptionType(
-		( entityKey ) -> new StringTextComponent( "Unkown entity: " ).appendString( entityKey.toString() ) );
+		( entityKey ) -> new StringTextComponent( "Unkown entity: " ).append( entityKey.toString() )
+	);
 	
 	//package-private
 	static ConfigOptionArgument config_option() {
@@ -59,7 +60,10 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 		SuggestionsBuilder builder ) {
 		
 		return context.getSource() instanceof ISuggestionProvider
-			? ISuggestionProvider.func_212476_a( ServerConfig.getOptionsStream().map( ConfigOption::getKey ), builder )
+			? ISuggestionProvider.suggestResource(
+			ServerConfig.getOptionsStream().map( ConfigOption::getKey ),
+			builder
+		)
 			: Suggestions.empty();
 	}
 	

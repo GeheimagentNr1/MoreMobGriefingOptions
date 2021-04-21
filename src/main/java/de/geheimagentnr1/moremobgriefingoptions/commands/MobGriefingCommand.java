@@ -22,7 +22,7 @@ public class MobGriefingCommand {
 	public static void register( CommandDispatcher<CommandSource> dispatcher ) {
 		
 		LiteralArgumentBuilder<CommandSource> mobgriefingCommand = Commands.literal( "mobgriefing" ).requires(
-			commandSource -> commandSource.hasPermissionLevel( 2 ) );
+			commandSource -> commandSource.hasPermission( 2 ) );
 		mobgriefingCommand.then( Commands.literal( "list" )
 			.executes( MobGriefingCommand::list ) );
 		mobgriefingCommand.then( Commands.argument( "mob name", ConfigOptionArgument.config_option() )
@@ -35,15 +35,15 @@ public class MobGriefingCommand {
 	private static int list( CommandContext<CommandSource> context ) {
 		
 		CommandSource source = context.getSource();
-		source.sendFeedback(
+		source.sendSuccess(
 			new StringTextComponent( String.format(
 				"mobGriefing gamerule = %b",
-				source.getServer().getGameRules().getBoolean( GameRules.MOB_GRIEFING )
+				source.getServer().getGameRules().getBoolean( GameRules.RULE_MOBGRIEFING )
 			) ),
 			false
 		);
 		ServerConfig.getOptionsStream().forEach(
-			configOption -> source.sendFeedback(
+			configOption -> source.sendSuccess(
 				new StringTextComponent( String.format(
 					"%s = %s",
 					configOption.getKey(),
@@ -58,7 +58,7 @@ public class MobGriefingCommand {
 	private static int showValue( CommandContext<CommandSource> context ) throws CommandSyntaxException {
 		
 		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "mob name" );
-		context.getSource().sendFeedback(
+		context.getSource().sendSuccess(
 			new StringTextComponent(
 				configOption.getKey() + " mobGriefing is currently set to: " + configOption.getValue()
 			),
@@ -71,7 +71,7 @@ public class MobGriefingCommand {
 		
 		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "mob name" );
 		configOption.setValue( MobGriefingOptionArgument.getMobGriefingOption( context, "value" ) );
-		context.getSource().sendFeedback(
+		context.getSource().sendSuccess(
 			new StringTextComponent(
 				configOption.getKey() + " mobGriefing is now set to: " + configOption.getValue()
 			),
