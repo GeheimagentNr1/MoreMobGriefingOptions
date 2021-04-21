@@ -43,8 +43,7 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 		
 		ResourceLocation resourcelocation = context.getArgument( name, ResourceLocation.class );
 		return ServerConfig.getOptionsStream()
-			.filter( configOption -> configOption.getKey()
-				.equals( resourcelocation ) )
+			.filter( configOption -> configOption.getKey().equals( resourcelocation ) )
 			.findFirst()
 			.orElseThrow( () -> INVALID_CONFIG_OPTION_EXCEPTION.create( resourcelocation ) );
 	}
