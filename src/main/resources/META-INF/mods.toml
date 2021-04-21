@@ -32,7 +32,7 @@ credits="Thanks for the logo goes to Muse31" #optional
 authors="GeheimagentNr1" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Mod that adds multible MobGriefing Options.
+Adds a MobGriefing configuration per entity.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.moremobgriefingoptions]] #optional
