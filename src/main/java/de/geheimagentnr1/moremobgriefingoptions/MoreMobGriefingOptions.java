@@ -7,7 +7,7 @@ import net.minecraftforge.fml.network.FMLNetworkConstants;
 import org.apache.commons.lang3.tuple.Pair;
 
 
-@SuppressWarnings( { "unused", "UtilityClassWithPublicConstructor" } )
+@SuppressWarnings( "UtilityClassWithPublicConstructor" )
 @Mod( MoreMobGriefingOptions.MODID )
 public class MoreMobGriefingOptions {
 	
@@ -18,10 +18,7 @@ public class MoreMobGriefingOptions {
 		
 		ModLoadingContext.get().registerExtensionPoint(
 			ExtensionPoint.DISPLAYTEST,
-			() -> Pair.of(
-				() -> FMLNetworkConstants.IGNORESERVERONLY,
-				( remote, isServer ) -> true
-			)
+			() -> Pair.of( () -> FMLNetworkConstants.IGNORESERVERONLY, ( remote, isServer ) -> true )
 		);
 	}
 }
