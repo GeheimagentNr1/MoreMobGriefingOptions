@@ -8,7 +8,7 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
-import de.geheimagentnr1.moremobgriefingoptions.config.MainConfig;
+import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
 import net.minecraft.command.ISuggestionProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
@@ -28,8 +28,7 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
 	private static final DynamicCommandExceptionType INVALID_CONFIG_OPTION_EXCEPTION = new DynamicCommandExceptionType(
-		( entityKey ) -> new StringTextComponent( "Unkown entity: " ).appendString( entityKey.toString() )
-	);
+		( entityKey ) -> new StringTextComponent( "Unkown entity: " ).appendString( entityKey.toString() ) );
 	
 	//package-private
 	static ConfigOptionArgument config_option() {
@@ -42,7 +41,7 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	static <S> ConfigOption getConfigOption( CommandContext<S> context, String name ) throws CommandSyntaxException {
 		
 		ResourceLocation resourcelocation = context.getArgument( name, ResourceLocation.class );
-		return MainConfig.getOptionsStream()
+		return ServerConfig.getOptionsStream()
 			.filter( configOption -> configOption.getKey().equals( resourcelocation ) )
 			.findFirst()
 			.orElseThrow( () -> INVALID_CONFIG_OPTION_EXCEPTION.create( resourcelocation ) );
@@ -60,11 +59,7 @@ class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 		SuggestionsBuilder builder ) {
 		
 		return context.getSource() instanceof ISuggestionProvider
-			? ISuggestionProvider.func_212476_a(
-			MainConfig.getOptionsStream()
-				.map( ConfigOption::getKey ),
-			builder
-		)
+			? ISuggestionProvider.func_212476_a( ServerConfig.getOptionsStream().map( ConfigOption::getKey ), builder )
 			: Suggestions.empty();
 	}
 	
