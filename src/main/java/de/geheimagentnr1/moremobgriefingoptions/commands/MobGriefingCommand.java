@@ -44,13 +44,11 @@ public class MobGriefingCommand {
 		);
 		ServerConfig.getOptionsStream().forEach(
 			configOption -> source.sendFeedback(
-				new StringTextComponent(
-					String.format(
-						"%s = %s",
-						configOption.getKey(),
-						configOption.getValue().name().toLowerCase( Locale.ENGLISH )
-					)
-				),
+				new StringTextComponent( String.format(
+					"%s = %s",
+					configOption.getKey(),
+					configOption.getValue().name().toLowerCase( Locale.ENGLISH )
+				) ),
 				false
 			)
 		);
