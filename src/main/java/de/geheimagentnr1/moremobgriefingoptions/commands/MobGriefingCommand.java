@@ -25,7 +25,7 @@ public class MobGriefingCommand {
 			commandSource -> commandSource.hasPermission( 2 ) );
 		mobgriefingCommand.then( Commands.literal( "list" )
 			.executes( MobGriefingCommand::list ) );
-		mobgriefingCommand.then( Commands.argument( "mob name", ConfigOptionArgument.config_option() )
+		mobgriefingCommand.then( Commands.argument( "entity_name", ConfigOptionArgument.config_option() )
 			.executes( MobGriefingCommand::showValue )
 			.then( Commands.argument( "value", MobGriefingOptionArgument.mob_griefing_option() )
 				.executes( MobGriefingCommand::setValue ) ) );
@@ -57,7 +57,7 @@ public class MobGriefingCommand {
 	
 	private static int showValue( CommandContext<CommandSource> context ) throws CommandSyntaxException {
 		
-		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "mob name" );
+		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "entity_name" );
 		context.getSource().sendSuccess(
 			new StringTextComponent(
 				configOption.getKey() + " mobGriefing is currently set to: " + configOption.getValue()
@@ -69,7 +69,7 @@ public class MobGriefingCommand {
 	
 	private static int setValue( CommandContext<CommandSource> context ) throws CommandSyntaxException {
 		
-		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "mob name" );
+		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "entity_name" );
 		configOption.setValue( MobGriefingOptionArgument.getMobGriefingOption( context, "value" ) );
 		context.getSource().sendSuccess(
 			new StringTextComponent(
