@@ -2,7 +2,6 @@ package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
 import de.geheimagentnr1.moremobgriefingoptions.commands.MobGriefingCommand;
-import de.geheimagentnr1.moremobgriefingoptions.commands.ModArgumentTypes;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
 import net.minecraftforge.event.entity.EntityMobGriefingEvent;
@@ -19,7 +18,6 @@ public class ForgeEventHandler {
 	@SubscribeEvent
 	public static void handlerFMLServerStartingEvent( FMLServerStartingEvent event ) {
 		
-		ModArgumentTypes.registerArgumentTypes();
 		MobGriefingCommand.register( event.getCommandDispatcher() );
 	}
 	
