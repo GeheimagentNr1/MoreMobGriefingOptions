@@ -1,4 +1,4 @@
-package de.geheimagentnr1.moremobgriefingoptions.commands;
+package de.geheimagentnr1.moremobgriefingoptions.commands.arguments.mob_griefing_option;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
@@ -13,24 +13,20 @@ import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
 
-//package-private
-class MobGriefingOptionArgument implements ArgumentType<MobGriefingOptionType> {
+public class MobGriefingOptionArgument implements ArgumentType<MobGriefingOptionType> {
 	
 	
-	//package-private
-	static final String registry_name = "mob_griefing_option";
+	public static final String registry_name = "mob_griefing_option";
 	
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "default" );
 	
-	//package-private
-	static MobGriefingOptionArgument mob_griefing_option() {
+	public static MobGriefingOptionArgument mob_griefing_option() {
 		
 		return new MobGriefingOptionArgument();
 	}
 	
-	//package-private
 	@SuppressWarnings( "SameParameterValue" )
-	static <S> MobGriefingOptionType getMobGriefingOption( CommandContext<S> context, String name ) {
+	public static <S> MobGriefingOptionType getMobGriefingOption( CommandContext<S> context, String name ) {
 		
 		return context.getArgument( name, MobGriefingOptionType.class );
 	}

@@ -1,7 +1,7 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 

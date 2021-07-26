@@ -1,6 +1,6 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
 import org.apache.logging.log4j.LogManager;
