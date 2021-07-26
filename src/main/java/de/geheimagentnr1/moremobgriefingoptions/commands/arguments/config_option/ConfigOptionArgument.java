@@ -35,7 +35,8 @@ public class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	}
 	
 	@SuppressWarnings( "SameParameterValue" )
-	public static <S> ConfigOption getConfigOption( CommandContext<S> context, String name ) throws CommandSyntaxException {
+	public static <S> ConfigOption getConfigOption( CommandContext<S> context, String name )
+		throws CommandSyntaxException {
 		
 		ResourceLocation resourcelocation = context.getArgument( name, ResourceLocation.class );
 		return ServerConfig.getOptionsStream()
