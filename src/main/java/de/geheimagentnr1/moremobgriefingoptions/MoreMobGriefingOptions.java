@@ -3,7 +3,7 @@ package de.geheimagentnr1.moremobgriefingoptions;
 import net.minecraftforge.fml.IExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fmllegacy.network.FMLNetworkConstants;
+import net.minecraftforge.network.NetworkConstants;
 
 
 @SuppressWarnings( "UtilityClassWithPublicConstructor" )
@@ -19,7 +19,7 @@ public class MoreMobGriefingOptions {
 		ModLoadingContext.get().registerExtensionPoint(
 			IExtensionPoint.DisplayTest.class,
 			() -> new IExtensionPoint.DisplayTest(
-				() -> FMLNetworkConstants.IGNORESERVERONLY,
+				() -> NetworkConstants.IGNORESERVERONLY,
 				( remote, isServer ) -> true
 			)
 		);
