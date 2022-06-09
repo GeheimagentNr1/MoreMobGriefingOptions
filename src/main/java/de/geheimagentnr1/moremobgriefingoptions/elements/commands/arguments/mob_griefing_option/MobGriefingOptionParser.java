@@ -1,4 +1,4 @@
-package de.geheimagentnr1.moremobgriefingoptions.commands.arguments.mob_griefing_option;
+package de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_griefing_option;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -8,7 +8,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
 import de.geheimagentnr1.moremobgriefingoptions.config.MobGriefingOptionType;
 import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Locale;
@@ -24,7 +24,7 @@ class MobGriefingOptionParser {
 	
 	
 	private static final DynamicCommandExceptionType MOB_GRIEFING_OPTION_INVALID = new DynamicCommandExceptionType(
-		object -> new TranslatableComponent(
+		object -> Component.translatable(
 			MoreMobGriefingOptions.MODID + ":argument.mob_griefing_option.invalid",
 			object
 		)

@@ -1,9 +1,9 @@
 package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
-import de.geheimagentnr1.moremobgriefingoptions.commands.MobGriefingCommand;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
+import de.geheimagentnr1.moremobgriefingoptions.elements.commands.MobGriefingCommand;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.EntityMobGriefingEvent;

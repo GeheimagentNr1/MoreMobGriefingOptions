@@ -31,7 +31,7 @@ public class ServerConfig {
 		Registry.ENTITY_TYPE.forEach(
 			entityType -> configOptions.add(
 				new ConfigOption(
-					entityType.getRegistryName(),
+					Registry.ENTITY_TYPE.getKey( entityType ),
 					entityType
 				)
 			)

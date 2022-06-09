@@ -1,4 +1,4 @@
-package de.geheimagentnr1.moremobgriefingoptions.commands.arguments.mob_griefing_option;
+package de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_griefing_option;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;

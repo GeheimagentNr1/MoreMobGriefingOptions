@@ -1,4 +1,4 @@
-package de.geheimagentnr1.moremobgriefingoptions.commands.arguments.config_option;
+package de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.config_option;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
@@ -10,7 +10,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
 import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Collection;
@@ -26,7 +26,7 @@ public class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	private static final Collection<String> EXAMPLES = Collections.singletonList( "zombie" );
 	
 	private static final DynamicCommandExceptionType INVALID_CONFIG_OPTION_EXCEPTION = new DynamicCommandExceptionType(
-		( entityKey ) -> new TextComponent( "Unkown entity: " ).append( entityKey.toString() )
+		( entityKey ) -> Component.literal( "Unkown entity: " ).append( entityKey.toString() )
 	);
 	
 	public static ConfigOptionArgument config_option() {

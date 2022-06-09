@@ -1,17 +1,17 @@
-package de.geheimagentnr1.moremobgriefingoptions.commands;
+package de.geheimagentnr1.moremobgriefingoptions.elements.commands;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import de.geheimagentnr1.moremobgriefingoptions.commands.arguments.config_option.ConfigOptionArgument;
-import de.geheimagentnr1.moremobgriefingoptions.commands.arguments.mob_griefing_option.MobGriefingOptionArgument;
+import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.config_option.ConfigOptionArgument;
+import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_griefing_option.MobGriefingOptionArgument;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.GameRules;
 
 import java.util.Locale;
@@ -38,7 +38,7 @@ public class MobGriefingCommand {
 		
 		CommandSourceStack source = context.getSource();
 		source.sendSuccess(
-			new TextComponent( String.format(
+			Component.literal( String.format(
 				"mobGriefing gamerule = %b",
 				source.getServer().getGameRules().getBoolean( GameRules.RULE_MOBGRIEFING )
 			) ),
@@ -46,7 +46,7 @@ public class MobGriefingCommand {
 		);
 		ServerConfig.getOptionsStream().forEach(
 			configOption -> source.sendSuccess(
-				new TextComponent( String.format(
+				Component.literal( String.format(
 					"%s = %s",
 					configOption.getKey(),
 					configOption.getValue().name().toLowerCase( Locale.ENGLISH )
@@ -61,7 +61,7 @@ public class MobGriefingCommand {
 		
 		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "entity_name" );
 		context.getSource().sendSuccess(
-			new TextComponent(
+			Component.literal(
 				configOption.getKey() + " mobGriefing is currently set to: " + configOption.getValue()
 			),
 			false
@@ -74,7 +74,7 @@ public class MobGriefingCommand {
 		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "entity_name" );
 		configOption.setValue( MobGriefingOptionArgument.getMobGriefingOption( context, "value" ) );
 		context.getSource().sendSuccess(
-			new TextComponent(
+			Component.literal(
 				configOption.getKey() + " mobGriefing is now set to: " + configOption.getValue()
 			),
 			false
