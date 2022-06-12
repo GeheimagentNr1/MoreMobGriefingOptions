@@ -13,12 +13,12 @@ public class ModArgumentTypes {
 	
 	public static void registerArgumentTypes() {
 		
-		Registry.register(
+		/*Registry.register(
 			Registry.COMMAND_ARGUMENT_TYPE,
 			MoreMobGriefingOptions.MODID + ":" + ConfigOptionArgument.registry_name,
 			ArgumentTypeInfos.registerByClass(
 				ConfigOptionArgument.class,
-				SingletonArgumentInfo.contextFree( ConfigOptionArgument::new )
+				SingletonArgumentInfo.contextFree( ConfigOptionArgument::config_option )
 			)
 		);
 		Registry.register(
@@ -26,8 +26,8 @@ public class ModArgumentTypes {
 			MoreMobGriefingOptions.MODID + ":" + MobGriefingOptionArgument.registry_name,
 			ArgumentTypeInfos.registerByClass(
 				MobGriefingOptionArgument.class,
-				SingletonArgumentInfo.contextFree( MobGriefingOptionArgument::new )
+				SingletonArgumentInfo.contextFree( MobGriefingOptionArgument::mob_griefing_option )
 			)
-		);
+		);*/
 	}
 }
