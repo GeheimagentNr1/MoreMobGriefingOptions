@@ -50,13 +50,6 @@ public class MoreMobGriefingOptions {
 	@SuppressWarnings( "unused" )
 	public MoreMobGriefingOptions() {
 		
-		ModLoadingContext.get().registerExtensionPoint(
-			IExtensionPoint.DisplayTest.class,
-			() -> new IExtensionPoint.DisplayTest(
-				() -> NetworkConstants.IGNORESERVERONLY,
-				( remote, isServer ) -> true
-			)
-		);
 		COMMAND_ARGUMENT_TYPES.register( FMLJavaModLoadingContext.get().getModEventBus());
 	}
 }
