@@ -1,8 +1,8 @@
 package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
-import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.ModArgumentTypes;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
+import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.ModArgumentTypes;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

@@ -1,13 +1,5 @@
 package de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments;
 
-import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
-import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.config_option.ConfigOptionArgument;
-import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_griefing_option.MobGriefingOptionArgument;
-import net.minecraft.commands.synchronization.ArgumentTypeInfos;
-import net.minecraft.commands.synchronization.SingletonArgumentInfo;
-import net.minecraft.core.Registry;
-
-
 public class ModArgumentTypes {
 	
 	
