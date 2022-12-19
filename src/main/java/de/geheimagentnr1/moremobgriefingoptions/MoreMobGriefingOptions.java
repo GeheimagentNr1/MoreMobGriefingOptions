@@ -5,7 +5,7 @@ import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.commands.synchronization.ArgumentTypeInfos;
 import net.minecraft.commands.synchronization.SingletonArgumentInfo;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,7 +20,7 @@ public class MoreMobGriefingOptions {
 	public static final String MODID = "moremobgriefingoptions";
 	
 	private static final DeferredRegister<ArgumentTypeInfo<?, ?>> COMMAND_ARGUMENT_TYPES = DeferredRegister.create(
-		Registry.COMMAND_ARGUMENT_TYPE_REGISTRY,
+		Registries.COMMAND_ARGUMENT_TYPE,
 		MODID
 	);
 	

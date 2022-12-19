@@ -1,6 +1,6 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -28,10 +28,10 @@ public class ServerConfig {
 		
 		BUILDER.comment( "MobGriefing settings" ).push( MOBGRIEFING );
 		ArrayList<ConfigOption> configOptions = new ArrayList<>();
-		Registry.ENTITY_TYPE.forEach(
+		BuiltInRegistries.ENTITY_TYPE.forEach(
 			entityType -> configOptions.add(
 				new ConfigOption(
-					Registry.ENTITY_TYPE.getKey( entityType ),
+					BuiltInRegistries.ENTITY_TYPE.getKey( entityType ),
 					entityType
 				)
 			)
