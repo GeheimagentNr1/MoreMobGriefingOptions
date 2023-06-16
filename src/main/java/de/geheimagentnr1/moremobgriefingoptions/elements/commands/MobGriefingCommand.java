@@ -38,7 +38,7 @@ public class MobGriefingCommand {
 		
 		CommandSourceStack source = context.getSource();
 		source.sendSuccess(
-			Component.literal( String.format(
+			() -> Component.literal( String.format(
 				"mobGriefing gamerule = %b",
 				source.getServer().getGameRules().getBoolean( GameRules.RULE_MOBGRIEFING )
 			) ),
@@ -46,7 +46,7 @@ public class MobGriefingCommand {
 		);
 		ServerConfig.getOptionsStream().forEach(
 			configOption -> source.sendSuccess(
-				Component.literal( String.format(
+				() -> Component.literal( String.format(
 					"%s = %s",
 					configOption.getKey(),
 					configOption.getValue().name().toLowerCase( Locale.ENGLISH )
@@ -61,7 +61,7 @@ public class MobGriefingCommand {
 		
 		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "entity_name" );
 		context.getSource().sendSuccess(
-			Component.literal(
+			() -> Component.literal(
 				configOption.getKey() + " mobGriefing is currently set to: " + configOption.getValue()
 			),
 			false
@@ -74,7 +74,7 @@ public class MobGriefingCommand {
 		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, "entity_name" );
 		configOption.setValue( MobGriefingOptionArgument.getMobGriefingOption( context, "value" ) );
 		context.getSource().sendSuccess(
-			Component.literal(
+			() -> Component.literal(
 				configOption.getKey() + " mobGriefing is now set to: " + configOption.getValue()
 			),
 			false
