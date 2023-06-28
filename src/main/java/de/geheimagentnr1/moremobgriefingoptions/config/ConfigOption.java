@@ -1,51 +1,19 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.common.ForgeConfigSpec;
+import org.jetbrains.annotations.NotNull;
 
 
-@SuppressWarnings( "PackageVisibleField" )
+@Data
+@RequiredArgsConstructor
 public class ConfigOption {
 	
 	
+	@NotNull
 	private final ResourceLocation key;
 	
-	private ForgeConfigSpec.EnumValue<MobGriefingOptionType> spec;
-	
-	private final EntityType<?> entity_type;
-	
-	//package-private
-	ConfigOption( ResourceLocation _key, EntityType<?> _entity_type ) {
-		
-		key = _key;
-		entity_type = _entity_type;
-	}
-	
-	public ResourceLocation getKey() {
-		
-		return key;
-	}
-	
-	//package-private
-	void setSpec( ForgeConfigSpec.EnumValue<MobGriefingOptionType> _spec ) {
-		
-		spec = _spec;
-	}
-	
-	public MobGriefingOptionType getValue() {
-		
-		return spec.get();
-	}
-	
-	
-	public void setValue( MobGriefingOptionType _value ) {
-		
-		spec.set( _value );
-	}
-	
-	public EntityType<?> getEntityType() {
-		
-		return entity_type;
-	}
+	@NotNull
+	private final MobGriefingOptionType value;
 }

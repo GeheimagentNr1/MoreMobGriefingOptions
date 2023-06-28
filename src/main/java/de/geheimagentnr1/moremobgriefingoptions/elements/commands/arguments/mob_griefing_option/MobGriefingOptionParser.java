@@ -10,6 +10,7 @@ import de.geheimagentnr1.moremobgriefingoptions.config.MobGriefingOptionType;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 import java.util.Optional;
@@ -23,6 +24,7 @@ import java.util.function.Function;
 class MobGriefingOptionParser {
 	
 	
+	@NotNull
 	private static final DynamicCommandExceptionType MOB_GRIEFING_OPTION_INVALID = new DynamicCommandExceptionType(
 		object -> Component.translatable(
 			MoreMobGriefingOptions.MODID + ":argument.mob_griefing_option.invalid",
@@ -30,8 +32,10 @@ class MobGriefingOptionParser {
 		)
 	);
 	
+	@NotNull
 	private static final Set<String> MOB_GRIEFING_OPTIONS = getMobGriefingOptionKeySet();
 	
+	@NotNull
 	private final StringReader reader;
 	
 	private MobGriefingOptionType mobGriefingOptionType;
@@ -39,11 +43,12 @@ class MobGriefingOptionParser {
 	private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> suggestionsBuilder;
 	
 	//package-private
-	MobGriefingOptionParser( StringReader _reader ) {
+	MobGriefingOptionParser( @NotNull StringReader _reader ) {
 		
 		reader = _reader;
 	}
 	
+	@NotNull
 	private static Set<String> getMobGriefingOptionKeySet() {
 		
 		Set<String> keySet = new TreeSet<>();
@@ -70,7 +75,8 @@ class MobGriefingOptionParser {
 		} );
 	}
 	
-	private Optional<MobGriefingOptionType> getMobGriefingOptionForRegistry( ResourceLocation resourceLocation ) {
+	@NotNull
+	private Optional<MobGriefingOptionType> getMobGriefingOptionForRegistry( @NotNull ResourceLocation resourceLocation ) {
 		
 		for( MobGriefingOptionType configOption : MobGriefingOptionType.values() ) {
 			if( configOption.name().equals( resourceLocation.getPath().toUpperCase( Locale.ENGLISH ) ) ) {
@@ -82,6 +88,7 @@ class MobGriefingOptionParser {
 	
 	//package-private
 	@SuppressWarnings( "ReturnOfThis" )
+	@NotNull
 	MobGriefingOptionParser parse() throws CommandSyntaxException {
 		
 		suggestionsBuilder = this::suggestColor;
@@ -90,18 +97,21 @@ class MobGriefingOptionParser {
 		return this;
 	}
 	
-	private CompletableFuture<Suggestions> suggestColorFuture( SuggestionsBuilder builder ) {
+	@NotNull
+	private CompletableFuture<Suggestions> suggestColorFuture( @NotNull SuggestionsBuilder builder ) {
 		
 		return builder.buildFuture();
 	}
 	
-	private CompletableFuture<Suggestions> suggestColor( SuggestionsBuilder builder ) {
+	@NotNull
+	private CompletableFuture<Suggestions> suggestColor( @NotNull SuggestionsBuilder builder ) {
 		
 		return SharedSuggestionProvider.suggest( MOB_GRIEFING_OPTIONS, builder );
 	}
 	
 	//package-private
-	CompletableFuture<Suggestions> fillSuggestions( SuggestionsBuilder builder ) {
+	@NotNull
+	CompletableFuture<Suggestions> fillSuggestions( @NotNull SuggestionsBuilder builder ) {
 		
 		return suggestionsBuilder.apply( builder.createOffset( reader.getCursor() ) );
 	}

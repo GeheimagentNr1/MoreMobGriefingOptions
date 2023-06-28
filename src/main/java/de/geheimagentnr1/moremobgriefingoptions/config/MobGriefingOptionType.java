@@ -1,16 +1,18 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
-import java.util.Locale;
+import de.geheimagentnr1.minecraft_forge_api.util.SimpleStringRepresentable;
+import org.jetbrains.annotations.NotNull;
 
 
-public enum MobGriefingOptionType {
+public enum MobGriefingOptionType implements SimpleStringRepresentable {
 	DEFAULT,
 	TRUE,
 	FALSE;
 	
+	@NotNull
 	@Override
 	public String toString() {
 		
-		return name().toLowerCase( Locale.ENGLISH );
+		return getSerializedName();
 	}
 }

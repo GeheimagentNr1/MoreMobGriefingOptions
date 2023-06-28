@@ -1,68 +1,95 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
+import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
+import de.geheimagentnr1.minecraft_forge_api.config.AbstractConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraftforge.fml.config.ModConfig;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 
-public class ServerConfig {
+public class ServerConfig extends AbstractConfig {
 	
 	
-	private static final Logger LOGGER = LogManager.getLogger( ServerConfig.class );
-	
-	private static final String MOD_NAME = ModLoadingContext.get().getActiveContainer().getModInfo().getDisplayName();
-	
-	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-	
+	@NotNull
 	private static final String MOBGRIEFING = "mobGriefing";
 	
-	private static ConfigOption[] OPTIONS;
-	
-	public static ForgeConfigSpec init() {
+	public ServerConfig( @NotNull AbstractMod _abstractMod ) {
 		
-		BUILDER.comment( "MobGriefing settings" ).push( MOBGRIEFING );
-		ArrayList<ConfigOption> configOptions = new ArrayList<>();
+		super( _abstractMod );
+	}
+	
+	@NotNull
+	@Override
+	public ModConfig.Type type() {
+		
+		return ModConfig.Type.SERVER;
+	}
+	
+	@Override
+	public boolean isEarlyLoad() {
+		
+		return false;
+	}
+	
+	@Override
+	protected void registerConfigValues() {
+		
+		push( "MobGriefing settings", MOBGRIEFING );
 		BuiltInRegistries.ENTITY_TYPE.forEach(
-			entityType -> configOptions.add(
-				new ConfigOption(
-					BuiltInRegistries.ENTITY_TYPE.getKey( entityType ),
-					entityType
-				)
-			)
+			entityType -> {
+				String registryKey = entityTypeToRegistryKey( entityType );
+				List<String> entityConfigPath = List.of( MOBGRIEFING, registryKey );
+				registerConfigValue(
+					registryKey + " " + MOBGRIEFING,
+					entityConfigPath,
+					( builder, path ) -> builder.defineEnum( path, MobGriefingOptionType.DEFAULT )
+				);
+			}
 		);
-		OPTIONS = configOptions.toArray( new ConfigOption[0] );
-		for( ConfigOption option : OPTIONS ) {
-			option.setSpec(
-				BUILDER.comment( option.getKey() + " " + MOBGRIEFING )
-					.defineEnum( option.getKey().toString(), MobGriefingOptionType.DEFAULT )
-			);
-		}
-		BUILDER.pop();
-		return BUILDER.build();
+		pop();
 	}
 	
-	public static void printConfig() {
+	@NotNull
+	private ResourceLocation entityTypeToResourceLocation( EntityType<?> entityType ) {
 		
-		LOGGER.info( "Loading \"{}\" Server Config", MOD_NAME );
-		for( ConfigOption option : OPTIONS ) {
-			LOGGER.info( "{} " + MOBGRIEFING + " = {}", option.getKey(), option.getValue() );
-		}
-		LOGGER.info( "\"{}\" Server Config loaded", MOD_NAME );
+		return BuiltInRegistries.ENTITY_TYPE.getKey( entityType );
 	}
 	
-	public static Stream<ConfigOption> getOptionsStream() {
+	@NotNull
+	public String entityTypeToRegistryKey( EntityType<?> entityType ) {
 		
-		return Arrays.stream( OPTIONS );
+		return entityTypeToResourceLocation( entityType ).toString();
 	}
 	
-	public static ConfigOption[] getOptions() {
+	@NotNull
+	public MobGriefingOptionType getMobGriefingOptionTypeOfEntityType( @NotNull EntityType<?> entityType ) {
 		
-		return OPTIONS;
+		return getValue( MobGriefingOptionType.class, List.of( MOBGRIEFING, entityTypeToRegistryKey( entityType ) ) );
+	}
+	
+	@NotNull
+	public Stream<ConfigOption> getOptionsStream() {
+		
+		List<ConfigOption> configOption = new ArrayList<>();
+		BuiltInRegistries.ENTITY_TYPE.forEach(
+			entityType -> {
+				MobGriefingOptionType mobGriefingOption = getMobGriefingOptionTypeOfEntityType( entityType );
+				configOption.add( new ConfigOption( entityTypeToResourceLocation( entityType ), mobGriefingOption ) );
+			}
+		);
+		return configOption.stream();
+	}
+	
+	public void setMobGriefingOptionType(
+		@NotNull ResourceLocation key,
+		@NotNull MobGriefingOptionType mobGriefingOption ) {
+		
+		setValue( MobGriefingOptionType.class, List.of( MOBGRIEFING, key.toString() ), mobGriefingOption );
 	}
 }

@@ -1,52 +1,43 @@
 package de.geheimagentnr1.moremobgriefingoptions;
 
-import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.config_option.ConfigOptionArgument;
-import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_griefing_option.MobGriefingOptionArgument;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.commands.synchronization.ArgumentTypeInfos;
-import net.minecraft.commands.synchronization.SingletonArgumentInfo;
-import net.minecraft.core.registries.Registries;
+import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
+import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
+import de.geheimagentnr1.moremobgriefingoptions.elements.commands.ModCommandsRegisterFactory;
+import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.ModArgumentTypesRegisterFactory;
+import de.geheimagentnr1.moremobgriefingoptions.handlers.LateConfigInitilizationHandler;
+import de.geheimagentnr1.moremobgriefingoptions.handlers.MobGriefingHandler;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 
-@SuppressWarnings( "UtilityClassWithPublicConstructor" )
 @Mod( MoreMobGriefingOptions.MODID )
-public class MoreMobGriefingOptions {
+public class MoreMobGriefingOptions extends AbstractMod {
 	
 	
+	@NotNull
 	public static final String MODID = "moremobgriefingoptions";
 	
-	private static final DeferredRegister<ArgumentTypeInfo<?, ?>> COMMAND_ARGUMENT_TYPES = DeferredRegister.create(
-		Registries.COMMAND_ARGUMENT_TYPE,
-		MODID
-	);
+	@NotNull
+	public static final String SERVER_CONFIG_NOT_FOUND_ERROR_MESSAGE = "MoreMobGriefingOptions ServerConfig not found";
 	
-	private static final RegistryObject<SingletonArgumentInfo<ConfigOptionArgument>>
-		CONFIG_OPTION_COMMAND_ARGUMENT_TYPE =
-		COMMAND_ARGUMENT_TYPES.register(
-			ConfigOptionArgument.registry_name,
-			() -> ArgumentTypeInfos.registerByClass(
-				ConfigOptionArgument.class,
-				SingletonArgumentInfo.contextFree( ConfigOptionArgument::config_option )
-			)
-		);
-	
-	private static final RegistryObject<SingletonArgumentInfo<MobGriefingOptionArgument>>
-		MOB_GRIEFING_OPTION_COMMAND_ARGUMENT_TYPE =
-		COMMAND_ARGUMENT_TYPES.register(
-			MobGriefingOptionArgument.registry_name,
-			() -> ArgumentTypeInfos.registerByClass(
-				MobGriefingOptionArgument.class,
-				SingletonArgumentInfo.contextFree( MobGriefingOptionArgument::mob_griefing_option )
-			)
-		);
-	
-	@SuppressWarnings( "unused" )
-	public MoreMobGriefingOptions() {
+	@NotNull
+	@Override
+	public String getModId() {
 		
-		COMMAND_ARGUMENT_TYPES.register( FMLJavaModLoadingContext.get().getModEventBus() );
+		return MODID;
+	}
+	
+	@Override
+	protected void initMod() {
+		
+		registerEventHandler( new ModArgumentTypesRegisterFactory( this ) );
+		registerEventHandler( new ModCommandsRegisterFactory( this ) );
+		registerEventHandler( new LateConfigInitilizationHandler( this ) );
+		registerEventHandler( new MobGriefingHandler( this ) );
+	}
+	
+	public void initMobgriefingConfig() {
+		
+		registerConfig( ServerConfig::new );
 	}
 }
