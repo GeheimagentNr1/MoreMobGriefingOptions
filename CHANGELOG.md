@@ -1,1 +1,2 @@
-Ported to 1.20.1 
+- Fix "An unexpected error occured trying to execute that command" (#3)
+- Fix old value been shown on mobgriefing set value command 
