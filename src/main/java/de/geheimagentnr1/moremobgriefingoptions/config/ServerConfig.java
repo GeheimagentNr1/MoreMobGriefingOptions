@@ -68,9 +68,15 @@ public class ServerConfig extends AbstractConfig {
 	}
 	
 	@NotNull
+	public MobGriefingOptionType getMobGriefingOptionTypeOfEntityType( @NotNull String registryKey ) {
+		
+		return getValue( MobGriefingOptionType.class, List.of( MOBGRIEFING, registryKey ) );
+	}
+	
+	@NotNull
 	public MobGriefingOptionType getMobGriefingOptionTypeOfEntityType( @NotNull EntityType<?> entityType ) {
 		
-		return getValue( MobGriefingOptionType.class, List.of( MOBGRIEFING, entityTypeToRegistryKey( entityType ) ) );
+		return getMobGriefingOptionTypeOfEntityType( entityTypeToRegistryKey( entityType ) );
 	}
 	
 	@NotNull

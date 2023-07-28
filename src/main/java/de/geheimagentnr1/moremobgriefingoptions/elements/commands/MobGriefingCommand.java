@@ -81,7 +81,7 @@ public class MobGriefingCommand implements CommandInterface {
 	
 	private int showValue( CommandContext<CommandSourceStack> context ) throws CommandSyntaxException {
 		
-		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, serverConfig, "entity_name" );
+		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, serverConfig(), "entity_name" );
 		context.getSource().sendSuccess(
 			() -> Component.literal(
 				configOption.getKey() + " mobGriefing is currently set to: " + configOption.getValue()
@@ -93,14 +93,15 @@ public class MobGriefingCommand implements CommandInterface {
 	
 	private int setValue( CommandContext<CommandSourceStack> context ) throws CommandSyntaxException {
 		
-		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, serverConfig, "entity_name" );
+		ConfigOption configOption = ConfigOptionArgument.getConfigOption( context, serverConfig(), "entity_name" );
 		serverConfig().setMobGriefingOptionType(
 			configOption.getKey(),
 			MobGriefingOptionArgument.getMobGriefingOption( context, "value" )
 		);
 		context.getSource().sendSuccess(
 			() -> Component.literal(
-				configOption.getKey() + " mobGriefing is now set to: " + configOption.getValue()
+				configOption.getKey() + " mobGriefing is now set to: " +
+					serverConfig().getMobGriefingOptionTypeOfEntityType( configOption.getKey().toString() )
 			),
 			false
 		);
