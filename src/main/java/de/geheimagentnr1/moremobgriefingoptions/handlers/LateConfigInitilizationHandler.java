@@ -1,10 +1,10 @@
 package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
-import de.geheimagentnr1.minecraft_forge_api.events.ModEventHandlerInterface;
+import de.geheimagentnr1.moremobgriefingoptions.api.events.ModEventHandlerInterface;
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
 import lombok.RequiredArgsConstructor;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -16,8 +16,7 @@ public class LateConfigInitilizationHandler implements ModEventHandlerInterface 
 	private final MoreMobGriefingOptions mod;
 	
 	@SubscribeEvent
-	@Override
-	public void handleFMLCommonSetupEvent( @NotNull FMLCommonSetupEvent event ) {
+	public void onFMLCommonSetupEvent( @NotNull FMLCommonSetupEvent event ) {
 		
 		mod.initMobgriefingConfig();
 	}

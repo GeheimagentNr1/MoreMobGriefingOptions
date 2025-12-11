@@ -1,8 +1,8 @@
 package de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments;
 
-import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
-import de.geheimagentnr1.minecraft_forge_api.registry.ElementsRegisterFactory;
-import de.geheimagentnr1.minecraft_forge_api.registry.RegistryEntry;
+import de.geheimagentnr1.moremobgriefingoptions.api.AbstractMod;
+import de.geheimagentnr1.moremobgriefingoptions.api.registry.ElementsRegisterFactory;
+import de.geheimagentnr1.moremobgriefingoptions.api.registry.RegistryEntry;
 import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.config_option.ConfigOptionArgument;
 import de.geheimagentnr1.moremobgriefingoptions.elements.commands.arguments.mob_griefing_option.MobGriefingOptionArgument;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +12,8 @@ import net.minecraft.commands.synchronization.SingletonArgumentInfo;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -23,6 +25,13 @@ public class ModArgumentTypesRegisterFactory extends ElementsRegisterFactory<Arg
 	
 	@NotNull
 	private final AbstractMod abstractMod;
+	
+	@NotNull
+	@Override
+	protected AbstractMod getAbstractMod() {
+		
+		return abstractMod;
+	}
 	
 	@NotNull
 	@Override
@@ -51,5 +60,11 @@ public class ModArgumentTypesRegisterFactory extends ElementsRegisterFactory<Arg
 				)
 			)
 		);
+	}
+	
+	@SubscribeEvent
+	public void onRegister( @NotNull RegisterEvent event ) {
+		
+		handleRegisterEvent( event );
 	}
 }

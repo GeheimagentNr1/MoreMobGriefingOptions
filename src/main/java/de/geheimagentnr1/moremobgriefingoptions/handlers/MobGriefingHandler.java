@@ -1,15 +1,14 @@
 package de.geheimagentnr1.moremobgriefingoptions.handlers;
 
-import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
-import de.geheimagentnr1.minecraft_forge_api.events.ForgeEventHandlerInterface;
+import de.geheimagentnr1.moremobgriefingoptions.api.AbstractMod;
+import de.geheimagentnr1.moremobgriefingoptions.api.events.ForgeEventHandlerInterface;
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.event.entity.EntityMobGriefingEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.event.entity.EntityMobGriefingEvent;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -33,8 +32,7 @@ public class MobGriefingHandler implements ForgeEventHandlerInterface {
 	}
 	
 	@SubscribeEvent
-	@Override
-	public void handleEntityMobGriefingEvent( @NotNull EntityMobGriefingEvent event ) {
+	public void onEntityMobGriefingEvent( @NotNull EntityMobGriefingEvent event ) {
 		
 		Entity entity = event.getEntity();
 		
@@ -42,8 +40,8 @@ public class MobGriefingHandler implements ForgeEventHandlerInterface {
 			return;
 		}
 		switch( serverConfig().getMobGriefingOptionTypeOfEntityType( entity.getType() ) ) {
-			case TRUE -> event.setResult( Event.Result.ALLOW );
-			case FALSE -> event.setResult( Event.Result.DENY );
+			case TRUE -> event.setCanGrief( true );
+			case FALSE -> event.setCanGrief( false );
 		}
 	}
 }

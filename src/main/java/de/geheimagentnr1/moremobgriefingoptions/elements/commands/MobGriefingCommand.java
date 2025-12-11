@@ -4,8 +4,8 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
-import de.geheimagentnr1.minecraft_forge_api.elements.commands.CommandInterface;
+import de.geheimagentnr1.moremobgriefingoptions.api.AbstractMod;
+import de.geheimagentnr1.moremobgriefingoptions.api.elements.commands.CommandInterface;
 import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
 import de.geheimagentnr1.moremobgriefingoptions.config.ConfigOption;
 import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
@@ -17,7 +17,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.GameRules;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 
 

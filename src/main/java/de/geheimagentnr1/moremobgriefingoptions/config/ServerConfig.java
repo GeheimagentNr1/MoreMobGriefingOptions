@@ -1,11 +1,11 @@
 package de.geheimagentnr1.moremobgriefingoptions.config;
 
-import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
-import de.geheimagentnr1.minecraft_forge_api.config.AbstractConfig;
+import de.geheimagentnr1.moremobgriefingoptions.api.AbstractMod;
+import de.geheimagentnr1.moremobgriefingoptions.api.config.AbstractConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
