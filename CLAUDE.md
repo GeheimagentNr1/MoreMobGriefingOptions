@@ -5,7 +5,7 @@
 **More MobGriefing Options** ist ein NeoForge Minecraft Mod.
 - **Mod ID**: `moremobgriefingoptions`
 - **Package**: `de.geheimagentnr1.moremobgriefingoptions`
-- **Java Version**: 21
+- **Java Version**: 21 (`develop_26.1`: 25, `jdk-25.0.4.7-hotspot`)
 - **NeoForge Version**: je Branch, siehe Tabelle
 
 Erweitert die MobGriefing-Gamerule um individuelle Optionen pro Mob-Typ.
@@ -14,6 +14,7 @@ Erweitert die MobGriefing-Gamerule um individuelle Optionen pro Mob-Typ.
 |---|---|---|---|---|
 | `develop_1.21.1` | 1.21.1 - 1.21.10 | `[1.21.1,1.21.10]` | `21.1.216` | Release `1.21.1-3.0.2` (2026-10-02, Fix: per `/mobgriefing` gesetzte Werte werden gespeichert) |
 | `develop_1.21.11` | 1.21.11 | `[1.21.11,1.21.12)` | `21.11.45` | Release `1.21.11-3.0.2` (2026-10-02); `ResourceLocation` → `Identifier`, `LEVEL_GAMEMASTERS`, `GameRules.MOB_GRIEFING` über `source.getLevel().getGameRules()` (`MinecraftServer.getGameRules()` entfernt), GameTest entfernt, JUnit ergänzt |
+| `develop_26.1` | 26.1 - 26.3 | `[26.1,27)` | `26.1.0.19-beta` (Java 25) | Release `26.1-3.0.2` (2026-10-02); aufbauend auf `develop_1.21.11`, nur Tooling, Bytecode identisch 26.1 - 26.3, `mod_description` korrigiert (war von DynamicalCompass kopiert) |
 
 `develop_1.21.3` ist ein alter, nur lokaler Forge-Stand (`forge_version`) und kein NeoForge-Port.
 
