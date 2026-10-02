@@ -9,7 +9,7 @@ import de.geheimagentnr1.moremobgriefingoptions.MoreMobGriefingOptions;
 import de.geheimagentnr1.moremobgriefingoptions.config.MobGriefingOptionType;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
@@ -68,7 +68,7 @@ class MobGriefingOptionParser {
 	private void readConfigOption() throws CommandSyntaxException {
 		
 		int cursor = reader.getCursor();
-		ResourceLocation resourceLocation = ResourceLocation.read( reader );
+		Identifier resourceLocation = Identifier.read( reader );
 		mobGriefingOptionType = getMobGriefingOptionForRegistry( resourceLocation ).orElseThrow( () -> {
 			reader.setCursor( cursor );
 			return MOB_GRIEFING_OPTION_INVALID.createWithContext( reader, resourceLocation.toString() );
@@ -76,7 +76,7 @@ class MobGriefingOptionParser {
 	}
 	
 	@NotNull
-	private Optional<MobGriefingOptionType> getMobGriefingOptionForRegistry( @NotNull ResourceLocation resourceLocation ) {
+	private Optional<MobGriefingOptionType> getMobGriefingOptionForRegistry( @NotNull Identifier resourceLocation ) {
 		
 		for( MobGriefingOptionType configOption : MobGriefingOptionType.values() ) {
 			if( configOption.name().equals( resourceLocation.getPath().toUpperCase( Locale.ENGLISH ) ) ) {

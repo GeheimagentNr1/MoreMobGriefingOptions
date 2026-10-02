@@ -14,7 +14,7 @@ import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfig;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +24,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 @RequiredArgsConstructor
-public class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
+public class ConfigOptionArgument implements ArgumentType<Identifier> {
 	
 	
 	@NotNull
@@ -68,7 +68,7 @@ public class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 		@NotNull String name )
 		throws CommandSyntaxException {
 		
-		ResourceLocation resourcelocation = context.getArgument( name, ResourceLocation.class );
+		Identifier resourcelocation = context.getArgument( name, Identifier.class );
 		return serverConfig.getOptionsStream()
 			.filter( configOption -> configOption.getKey().equals( resourcelocation ) )
 			.findFirst()
@@ -77,9 +77,9 @@ public class ConfigOptionArgument implements ArgumentType<ResourceLocation> {
 	
 	@NotNull
 	@Override
-	public ResourceLocation parse( @NotNull StringReader reader ) throws CommandSyntaxException {
+	public Identifier parse( @NotNull StringReader reader ) throws CommandSyntaxException {
 		
-		return ResourceLocation.read( reader );
+		return Identifier.read( reader );
 	}
 	
 	@NotNull

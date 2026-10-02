@@ -82,6 +82,7 @@ public abstract class AbstractConfig {
 			throw new IllegalArgumentException( "Config value not found for path: " + path );
 		}
 		( (ModConfigSpec.ConfigValue<T>) configValue ).set( value );
+		configValue.save();
 	}
 	
 	@NotNull

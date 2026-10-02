@@ -16,7 +16,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,8 +44,8 @@ public class MobGriefingCommand implements CommandInterface {
 	@Override
 	public LiteralArgumentBuilder<CommandSourceStack> build() {
 		
-		LiteralArgumentBuilder<CommandSourceStack> mobgriefingCommand = Commands.literal( "mobgriefing" ).requires(
-			commandSource -> commandSource.hasPermission( 2 ) );
+		LiteralArgumentBuilder<CommandSourceStack> mobgriefingCommand = Commands.literal( "mobgriefing" )
+			.requires( Commands.hasPermission( Commands.LEVEL_GAMEMASTERS ) );
 		mobgriefingCommand.then( Commands.literal( "list" )
 			.executes( this::list ) );
 		mobgriefingCommand.then( Commands.argument( "entity_name", ConfigOptionArgument.config_option( abstractMod ) )
@@ -61,7 +61,7 @@ public class MobGriefingCommand implements CommandInterface {
 		source.sendSuccess(
 			() -> Component.literal( String.format(
 				"mobGriefing gamerule = %b",
-				source.getServer().getGameRules().getBoolean( GameRules.RULE_MOBGRIEFING )
+				source.getLevel().getGameRules().get( GameRules.MOB_GRIEFING )
 			) ),
 			false
 		);

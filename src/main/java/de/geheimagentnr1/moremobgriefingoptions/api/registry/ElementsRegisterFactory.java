@@ -4,7 +4,7 @@ import de.geheimagentnr1.moremobgriefingoptions.api.AbstractMod;
 import de.geheimagentnr1.moremobgriefingoptions.api.events.ModEventHandlerInterface;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +27,7 @@ public abstract class ElementsRegisterFactory<T> implements ModEventHandlerInter
 		
 		event.register( registryKey(), registry -> {
 			elements().forEach( entry -> registry.register(
-				ResourceLocation.fromNamespaceAndPath( getAbstractMod().getModId(), entry.name() ),
+				Identifier.fromNamespaceAndPath( getAbstractMod().getModId(), entry.name() ),
 				entry.supplier().get()
 			) );
 		} );

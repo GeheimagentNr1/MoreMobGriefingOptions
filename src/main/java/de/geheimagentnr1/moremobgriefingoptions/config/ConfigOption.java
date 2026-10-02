@@ -2,7 +2,7 @@ package de.geheimagentnr1.moremobgriefingoptions.config;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -12,7 +12,7 @@ public class ConfigOption {
 	
 	
 	@NotNull
-	private final ResourceLocation key;
+	private final Identifier key;
 	
 	@NotNull
 	private final MobGriefingOptionType value;

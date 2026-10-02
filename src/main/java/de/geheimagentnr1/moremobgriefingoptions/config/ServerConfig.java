@@ -3,7 +3,7 @@ package de.geheimagentnr1.moremobgriefingoptions.config;
 import de.geheimagentnr1.moremobgriefingoptions.api.AbstractMod;
 import de.geheimagentnr1.moremobgriefingoptions.api.config.AbstractConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.fml.config.ModConfig;
 import org.jetbrains.annotations.NotNull;
@@ -56,7 +56,7 @@ public class ServerConfig extends AbstractConfig {
 	}
 	
 	@NotNull
-	private ResourceLocation entityTypeToResourceLocation( EntityType<?> entityType ) {
+	private Identifier entityTypeToResourceLocation( EntityType<?> entityType ) {
 		
 		return BuiltInRegistries.ENTITY_TYPE.getKey( entityType );
 	}
@@ -93,7 +93,7 @@ public class ServerConfig extends AbstractConfig {
 	}
 	
 	public void setMobGriefingOptionType(
-		@NotNull ResourceLocation key,
+		@NotNull Identifier key,
 		@NotNull MobGriefingOptionType mobGriefingOption ) {
 		
 		setValue( MobGriefingOptionType.class, List.of( MOBGRIEFING, key.toString() ), mobGriefingOption );
