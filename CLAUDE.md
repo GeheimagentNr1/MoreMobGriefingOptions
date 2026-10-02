@@ -2,13 +2,22 @@
 
 ## Projekt-Übersicht
 
-**More MobGriefing Options** ist ein NeoForge Minecraft Mod für Minecraft 1.21.1.
+**More MobGriefing Options** ist ein NeoForge Minecraft Mod.
 - **Mod ID**: `moremobgriefingoptions`
 - **Package**: `de.geheimagentnr1.moremobgriefingoptions`
 - **Java Version**: 21
-- **NeoForge Version**: 21.1.x
+- **NeoForge Version**: je Branch, siehe Tabelle
 
 Erweitert die MobGriefing-Gamerule um individuelle Optionen pro Mob-Typ.
+
+| Branch | MC | Range | NeoForge (kompiliert gegen) | Hinweis |
+|---|---|---|---|---|
+| `develop_1.21.1` | 1.21.1 - 1.21.10 | `[1.21.1,1.21.10]` | `21.1.216` | Release `1.21.1-3.0.2` (2026-10-02, Fix: per `/mobgriefing` gesetzte Werte werden gespeichert) |
+| `develop_1.21.11` | 1.21.11 | `[1.21.11,1.21.12)` | `21.11.45` | Release `1.21.11-3.0.2` (2026-10-02); `ResourceLocation` → `Identifier`, `LEVEL_GAMEMASTERS`, `GameRules.MOB_GRIEFING` über `source.getLevel().getGameRules()` (`MinecraftServer.getGameRules()` entfernt), GameTest entfernt, JUnit ergänzt |
+
+`develop_1.21.3` ist ein alter, nur lokaler Forge-Stand (`forge_version`) und kein NeoForge-Port.
+
+**Config speichern:** `ModConfigSpec.ConfigValue.set(..)` schreibt nicht auf die Platte - `api/config/AbstractConfig.setValue` ruft deshalb `configValue.save()` auf (bis 3.0.1 fehlte das, Werte gingen beim Neustart verloren).
 
 ## Abhängigkeiten
 
@@ -63,7 +72,7 @@ Verschiedene Java-Versionen sind unter `C:\Program Files\Eclipse Adoptium` insta
 
 ```powershell
 # Java 21 für MC 1.20.5+ (NeoForge)
-$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot"
+$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-21.0.12.8-hotspot"
 ./gradlew build
 ```
 
@@ -79,20 +88,17 @@ Tests liegen unter `src/test/java/`. Ergebnisse: `build/reports/tests/test/index
 
 ### NeoForge GameTest Framework
 
-Für Integration Tests in einer echten Minecraft-Umgebung:
+Ab `develop_1.21.11` gibt es keine GameTests mehr (trivialer Smoke-Test samt Run-Config und CI-Job entfernt).
 
-```bash
-./gradlew runGameTestServer
-```
+### Ingame-Test
 
-GameTest-Klassen werden mit `@GameTestHolder` annotiert und liegen unter `src/main/java/.../elements/gametests/`.
+`/mobgriefing list`, Creeper mit `/mobgriefing minecraft:creeper false|true` gegen die Gamerule `mobGriefing` testen, Rechte ohne OP. Speichern automatisch per RCON prüfen: Wert setzen → Eintrag in `world/serverconfig/moremobgriefingoptions-server.toml` → Neustart → Wert abfragen.
 
 ### CI/CD (GitHub Actions)
 
 Der Workflow `.github/workflows/build-and-test.yml` führt automatisch aus:
 1. **Build**: Kompiliert den Mod
 2. **Unit Tests**: Führt JUnit Tests aus
-3. **GameTests**: Startet GameTestServer (optional)
 
 ### Was kann automatisiert getestet werden?
 
