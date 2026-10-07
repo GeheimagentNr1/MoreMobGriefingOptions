@@ -1,2 +1,1 @@
-- Fix "An unexpected error occured trying to execute that command" (#3)
-- Fix old value been shown on mobgriefing set value command 
+- Fix dedicated servers not starting with Forge 47.4.16 and newer ("Attempted to load class net/minecraft/client/multiplayer/MultiPlayerGameMode for invalid dist DEDICATED_SERVER")
