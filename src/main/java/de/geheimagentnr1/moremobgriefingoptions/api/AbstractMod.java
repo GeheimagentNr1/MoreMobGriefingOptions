@@ -1,5 +1,6 @@
 package de.geheimagentnr1.moremobgriefingoptions.api;
 
+import de.geheimagentnr1.moremobgriefingoptions.config.ServerConfigRegistration;
 import de.geheimagentnr1.moremobgriefingoptions.api.config.AbstractConfig;
 import de.geheimagentnr1.moremobgriefingoptions.api.events.ForgeEventHandlerInterface;
 import de.geheimagentnr1.moremobgriefingoptions.api.events.ModEventHandlerInterface;
@@ -52,7 +53,11 @@ public abstract class AbstractMod {
 		
 		AbstractConfig config = configFactory.apply( this );
 		configMap.put( config.type(), config );
-		modContainer.registerConfig( config.type(), config.getSpec() );
+		if( config.type() == ModConfig.Type.SYNCED ) {
+			ServerConfigRegistration.register( modContainer, config.getSpec() );
+		} else {
+			modContainer.registerConfig( config.type(), config.getSpec() );
+		}
 	}
 	
 	@NotNull

@@ -48,7 +48,7 @@ public class ConfigOptionArgument implements ArgumentType<Identifier> {
 	private ServerConfig serverConfig() {
 		
 		if( serverConfig == null ) {
-			serverConfig = abstractMod.getConfig( ModConfig.Type.SERVER, ServerConfig.class )
+			serverConfig = abstractMod.getConfig( ModConfig.Type.SYNCED, ServerConfig.class )
 				.orElseThrow( () -> new IllegalStateException( MoreMobGriefingOptions.SERVER_CONFIG_NOT_FOUND_ERROR_MESSAGE ) );
 		}
 		return serverConfig;
